@@ -1,0 +1,68 @@
+ 
+
+
+
+ <form class="example-form" #form="ngForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>Identity</mat-label>
+      <input matInput type="text" [(ngModel)]="user.Identity" name="identity" (ngModelChange)="setChildrenRelation()" required  >
+    </mat-form-field>
+  
+    <br>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>firstName</mat-label>
+      <input matInput type="text"   [(ngModel)]="user.firstName" name="firstName"  required  >
+    </mat-form-field>
+    <br>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>lastName</mat-label>
+      <input matInput type="text" [(ngModel)]="user.lastName" name="lastName"  required  >
+    </mat-form-field>
+    <br>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>dateBirth</mat-label>
+      <input matInput type="date"  [(ngModel)]="user.dateBirth" name="dateBirth"  required  >
+    </mat-form-field>
+    <br>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>maleOrFemale</mat-label>
+      <input matInput type="text" [(ngModel)]="user.maleOrFemale" name="maleOrFemale"  required  >
+    </mat-form-field>
+    <br>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>HMO</mat-label>
+      <input matInput type="text" [(ngModel)]="user.HMO" name="HMO"  required  >
+    </mat-form-field>
+    <br>
+    <br>
+
+
+
+<input type="button" value="Add a child" (click)="addChild()" />
+<br>
+<div *ngIf="children">
+  <div *ngFor="let child of children; index as i">
+    <mat-form-field class="example-full-width">
+      <mat-label>Identity</mat-label>
+      <input matInput type="text" [(ngModel)]="child.Identity" name="{{'childIdentity'+i}}"  required  >
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>firstName</mat-label>
+      <input matInput type="text" [(ngModel)]="child.firstName" name="{{'childFirstName'+i}}" required  >
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>dateBirth</mat-label>
+      <input matInput type="date" [(ngModel)]="child.dateBirth" name="{{'childDateBirth'+i}}"  required  >
+    </mat-form-field>
+   
+  </div>
+ 
+</div>
+<input type="submit" value="Save" [disabled]="form.invalid" (click)="logIn()" />
+
+</form>
